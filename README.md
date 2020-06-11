@@ -11,7 +11,7 @@
 
 **Depict** is a  C++ OpenGL Graphics Engine (c) Jukka Maatta
 
-[Latest Version 1.20.6](https://github.com/jsmaatta/DepictEngine)
+[Latest Version 1.20.6](https://github.com/jsmaatta/Depict)
 
 Features
 --------
