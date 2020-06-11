@@ -1,12 +1,17 @@
 # Depict Engine
-![Depict](./logo/logo.png)
-<div style="text-align:center"><img src="./logo/logo.png" alt="Depict" width="1000"/></div>
-<div style="text-align:center"><img src="./logo/cpp.png" alt="C++" width="100"/>
-<img src="./logo/opengl.svg" alt="OpenGL" width="250"/></div>
+<p align="center">
+    <img src="./logo/logo.png" alt="Depict" width="1000"/>
+</p>
+<p align="center">
+    <img src="./logo/cpp.png" alt="C++" width="50"/>
+    <img src="./logo/opengl.svg" alt="OpenGL" width="150"/>
+</p>
+
+
+
+**Depict** is a  C++ OpenGL Graphics Engine (c) Jukka Maatta
 
 [Latest Version 1.20.6](https://github.com/jsmaatta/DepictEngine)
-
-Depict is a  C++ OpenGL Graphics Engine (c) Jukka Maatta 2020.
 
 Features
 --------
@@ -34,10 +39,19 @@ using namespace depict;
 
 int main() {
 
+    // Code here
+
+    return 0;
+}
+```
+
+[//]: # "
+int main() {
+
     unsigned int WIDTH =  800;
     unsigned int HEIGHT = 600;
 
-    init_window(WIDTH, HEIGHT, "Depict Engine - basic window");
+    init_window(WIDTH, HEIGHT, 'Depict Engine - basic window');
     while (!window_should_close())
     {
 			// Code here
@@ -45,7 +59,11 @@ int main() {
     close_window();   
     return 0;
 }
-```
+
+"
+
+
 
 Made by  **Jukka Maatta** 2018-2020
-[www.kuvaus.org](https://www.kuvaus.org)
+
+[//]: # "[www.kuvaus.org](https://www.kuvaus.org)"
