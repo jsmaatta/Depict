@@ -45,25 +45,4 @@ int main() {
 }
 ```
 
-[//]: # "
-int main() {
-
-    unsigned int WIDTH =  800;
-    unsigned int HEIGHT = 600;
-
-    init_window(WIDTH, HEIGHT, 'Depict Engine - basic window');
-    while (!window_should_close())
-    {
-			// Code here
-    }
-    close_window();   
-    return 0;
-}
-
-"
-
-
-
 Made by  **Jukka Maatta** 2018-2020
-
-[//]: # "[www.kuvaus.org](https://www.kuvaus.org)"
