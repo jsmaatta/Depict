@@ -27,6 +27,7 @@ Dependencies
 - OpenGL Mathematics ([GLM](https://github.com/g-truc/glm))
 - [STB_image](https://github.com/nothings/stb)
 - Open Asset Import Library ([ASSIMP](https://github.com/assimp/assimp))
+- Dear [ImGui](https://github.com/ocornut/imgui)
 
 Ease of use
 -----------
