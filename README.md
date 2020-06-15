@@ -1,10 +1,10 @@
 # Depict Engine
 <p align="center">
-    <img src="./logo/logo.png" alt="Depict" width="1000"/>
+    <img src="./docs/logo.png" alt="Depict" width="400"/>
 </p>
 <p align="center">
-    <img src="./logo/cpp.png" alt="C++" width="50"/>
-    <img src="./logo/opengl.svg" alt="OpenGL" width="150"/>
+    <img src="./docs/cpp.png" alt="C++" width="50"/>
+    <img src="./docs/opengl.svg" alt="OpenGL" width="150"/>
 </p>
 
 
