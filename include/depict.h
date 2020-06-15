@@ -7,7 +7,6 @@
 #define SDL  
 
 #include <SDL.h>
-#include <imgui.h> //optional imgui.h and imconfig.h
 
 #include "depictmath.h"
 

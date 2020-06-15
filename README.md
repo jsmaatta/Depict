@@ -46,4 +46,4 @@ int main() {
 }
 ```
 
-Made by  **Jukka Maatta** 2018-2020
+Made by  **Jukka Maatta** 2020
