@@ -4,9 +4,9 @@
 #ifndef DEPICT_H
 #define DEPICT_H 
 
-#define SDL   
+#define SDL  
 
-#include <SDL.h> 
+#include <SDL.h>
 
 #include "depictmath.h"
 
@@ -139,7 +139,7 @@ void close_window();
 void copyright();
 double get_time(); 
 bool is_key_down(keys KEY);
-std::tuple<float,float> get_mouseposition();
+std::tuple<float,float> get_mouseposition(bool lock_mouse=false);
 /////////////////////////////////////////////FUNCTIONS////////////////////////////////////////////////
 
 
