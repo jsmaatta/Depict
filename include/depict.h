@@ -6,7 +6,7 @@
 
 #define SDL  
 
-#include <SDL.h>
+#include <SDL.h> 
 
 #include "depictmath.h"
 
@@ -28,6 +28,10 @@
 #include <cassert> 
 #include <ctype.h>
 #include <chrono>
+#include <tuple>
+//multithreading
+#include <thread>
+#include <future>
 
 #include <utility>
 #include <math.h>
@@ -112,6 +116,20 @@ struct Color
 
 namespace depict {
 
+enum keys
+{
+	KEY_UP,
+	KEY_DOWN,
+	KEY_LEFT,
+	KEY_RIGHT,
+	KEY_W,
+	KEY_S,
+	KEY_A,
+	KEY_D,
+	KEY_C,
+	KEY_ESCAPE
+};
+
 /////////////////////////////////////////////FUNCTIONS////////////////////////////////////////////////
 void init_window(unsigned int width, unsigned int height, std::string title ="");
 void clear_window(Color color = BLACK);
@@ -120,6 +138,7 @@ bool window_should_close();
 void close_window(); 
 void copyright();
 double get_time(); 
+bool is_key_down(keys KEY);
 /////////////////////////////////////////////FUNCTIONS////////////////////////////////////////////////
 
 
