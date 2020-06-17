@@ -4,7 +4,7 @@
 #ifndef DEPICT_H
 #define DEPICT_H 
 
-#define SDL  
+#define SDL   
 
 #include <SDL.h> 
 
@@ -112,23 +112,23 @@ struct Color
     #define LOGOGRAY    Color(55.0f, 55.0f, 55.0f, 255.0f)            // Logo gray
     #define BACKGROUND  Color(50.0f, 62.0f, 80.0f, 255.0f)            // Background
 
-
+	enum keys
+	{
+		KEY_UP,
+		KEY_DOWN,
+		KEY_LEFT,
+		KEY_RIGHT,
+		KEY_W,
+		KEY_S,
+		KEY_A,
+		KEY_D,
+		KEY_C,
+		KEY_ESCAPE
+	};
 
 namespace depict {
 
-enum keys
-{
-	KEY_UP,
-	KEY_DOWN,
-	KEY_LEFT,
-	KEY_RIGHT,
-	KEY_W,
-	KEY_S,
-	KEY_A,
-	KEY_D,
-	KEY_C,
-	KEY_ESCAPE
-};
+
 
 /////////////////////////////////////////////FUNCTIONS////////////////////////////////////////////////
 void init_window(unsigned int width, unsigned int height, std::string title ="");
@@ -139,6 +139,7 @@ void close_window();
 void copyright();
 double get_time(); 
 bool is_key_down(keys KEY);
+std::tuple<float,float> get_mouseposition();
 /////////////////////////////////////////////FUNCTIONS////////////////////////////////////////////////
 
 
