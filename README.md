@@ -19,7 +19,7 @@ Features
 - Made in C++
 - GPU support with OpenGL **4.1**
 - Supports GPU instancing
-- Built as a static library for ease of use
+- Built as a static library for ease-of-use
 
 Dependencies
 ------------

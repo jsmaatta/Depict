@@ -114,7 +114,7 @@ struct Color
     #define LOGOGRAY    Color(55.0f, 55.0f, 55.0f, 255.0f)            // Logo gray
     #define BACKGROUND  Color(50.0f, 62.0f, 80.0f, 255.0f)            // Background
 
-	enum keys
+	enum Keys
 	{
 		KEY_UP,
 		KEY_DOWN,
@@ -140,7 +140,7 @@ bool window_should_close();
 void close_window(); 
 void copyright();
 double get_time(); 
-bool is_key_down(keys KEY);
+bool is_key_down(Keys KEY);
 std::tuple<float,float> get_mouse_position(bool lock_mouse=false);
 /////////////////////////////////////////////FUNCTIONS////////////////////////////////////////////////
 
