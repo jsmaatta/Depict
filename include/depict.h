@@ -5,8 +5,10 @@
 #define DEPICT_H 
 
 #define SDL  
+//#define NOLIB
 
 #include <SDL.h>
+#include <imgui.h> //optional imgui.h and imconfig.h
 
 #include "depictmath.h"
 
@@ -139,7 +141,7 @@ void close_window();
 void copyright();
 double get_time(); 
 bool is_key_down(keys KEY);
-std::tuple<float,float> get_mouseposition(bool lock_mouse=false);
+std::tuple<float,float> get_mouse_position(bool lock_mouse=false);
 /////////////////////////////////////////////FUNCTIONS////////////////////////////////////////////////
 
 
@@ -171,26 +173,26 @@ const GLfloat ZOOM       =  45.0f;
 /////////////////////////////////////////////CAMERA////////////////////////////////////////////////
 struct Camera
 { 
-    vec3 Position;
-    vec3 Front;
-    vec3 Up;
-    vec3 Right;
-    vec3 WorldUp;
-    GLfloat Yaw;
-    GLfloat Pitch;
-    GLfloat MovementSpeed;
-    GLfloat MouseSensitivity;
-    GLfloat Zoom;
+    vec3 position;
+    vec3 front;
+    vec3 up;
+    vec3 right;
+    vec3 world_up;
+    GLfloat yaw;
+    GLfloat pitch;
+    GLfloat movement_speed;
+    GLfloat mouse_sensitivity;
+    GLfloat zoom;
 
     Camera(vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 up = vec3(0.0f, 1.0f, 0.0f), GLfloat yaw = YAW, GLfloat pitch = PITCH);
-    Camera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch);
+    Camera(GLfloat pos_x, GLfloat pos_y, GLfloat pos_z, GLfloat up_x, GLfloat up_y, GLfloat up_z, GLfloat yaw, GLfloat pitch);
     ~Camera();
-    mat4 GetViewMatrix();
-    void ProcessKeyboard(Camera_Movement direction, GLfloat deltaTime);
-    void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true);
-    void ProcessMouseScroll(GLfloat yoffset);
+    mat4 get_view_matrix();
+    void process_keyboard(Camera_Movement direction, GLfloat delta_time);
+    void process_mouse_movement(GLfloat xoffset, GLfloat yoffset, GLboolean constrain_pitch = true);
+    void process_mouse_scroll(GLfloat yoffset);
 private:
-    void updateCameraVectors();
+    void update_camera_vectors();
 };
 /////////////////////////////////////////////CAMERA////////////////////////////////////////////////
 
@@ -202,13 +204,13 @@ struct Shader
     GLuint ID;
     std::string name;
     Shader();
-    Shader(const GLchar* vertexPath, const GLchar* fragmentPath, const GLchar* geometryPath = nullptr);
+    Shader(const GLchar* vertex_path, const GLchar* fragment_path, const GLchar* geometry_path = nullptr);
     // Uses the current shader
     void use();
-    void unUse();
+    void un_use();
 
    // utility uniform functions
-    void bindAttribute(GLint attribute, const std::string& variableName) const;
+    void bind_attribute(GLint attribute, const std::string& variable_name) const;
 
     void set(const std::string &name, bool value) const;
     void set(const std::string &name, int value) const;
@@ -219,12 +221,12 @@ struct Shader
     void set(const std::string &name, mat4 matrix) const;
 
 private:
-    void checkCompileErrors(GLuint shader, std::string type);
+    void check_compile_errors(GLuint shader, std::string type);
 };
 
-Shader LoadShader(std::string name, const GLchar* vertexPath, const GLchar* fragmentPath, const GLchar* geometryPath = nullptr);
-Shader GetShader(std::string name);
-void ClearShaders();
+Shader load_shader(std::string name, const GLchar* vertex_path, const GLchar* fragment_path, const GLchar* geometry_path = nullptr);
+Shader get_shader(std::string name);
+void clear_shaders();
 std::map<std::string, Shader> get_shaders();
 /////////////////////////////////////////////SHADER////////////////////////////////////////////////
 
@@ -238,39 +240,39 @@ struct Texture {
 	//aiString path;
 
     GLuint width, height; 
-    GLuint internalFormat;
-    GLuint imageFormat;
+    GLuint internal_format;
+    GLuint image_format;
 
-    GLuint wrapS;
-    GLuint wrapT;
-    GLuint filterMin;
-    GLuint filterMax;
+    GLuint wrap_s;
+    GLuint wrap_t;
+    GLuint filter_min;
+    GLuint filter_max;
     Texture();
     void generate(GLuint width, GLuint height, unsigned char* image);
-    void Bind() const;
+    void bind() const;
 
 };
 
-Texture loadTextureFromFile(const GLchar *file, GLboolean alpha, GLboolean gamma, GLboolean flip);
-GLuint TextureFromFile(const char *path, const std::string &directory, bool gamma = false, bool alpha = false, bool flip = false);
+Texture load_texture_from_file(const GLchar *file, GLboolean alpha, GLboolean gamma, GLboolean flip);
+GLuint texture_from_file(const char *path, const std::string &directory, bool gamma = false, bool alpha = false, bool flip = false);
 
 static std::map<std::string, Texture> Textures;
 
-Texture LoadTexture(const GLchar *file, GLboolean alpha, GLboolean flip, std::string name);
-Texture GetTexture(std::string name);
-void ClearTextures();
+Texture load_texture(const GLchar *file, GLboolean alpha, GLboolean flip, std::string name);
+Texture get_texture(std::string name);
+void clear_textures();
 /////////////////////////////////////////////TEXTURE////////////////////////////////////////////////
 
 
 
 /////////////////////////////////////////////MODEL////////////////////////////////////////////////
 struct Vertex { 
-    vec3 Position; 
-    vec3 Normal; 
-    vec2 TexCoords; 
-    vec3 Tangent; 
-    vec3 Bitangent; 
-    vec4 Color;
+    vec3 position; 
+    vec3 normal; 
+    vec2 tex_coords; 
+    vec3 tangent; 
+    vec3 bitangent; 
+    vec4 color;
 };
 
 struct Mesh { 
@@ -282,11 +284,11 @@ struct Mesh {
 
     ~Mesh();
 
-    void Draw(Shader ourShader, int number);
+    void draw(Shader our_shader, int number);
 
     private: 
         GLuint VBO, EBO; 
-        void setupMesh();
+        void setup_mesh();
 
 };
 
@@ -295,26 +297,26 @@ struct Model
     std::vector<Texture> textures_loaded;    
     std::vector<Mesh> meshes;
     std::string directory;
-    bool gammaCorrection;
+    bool gamma_correction;
 
-    Model(std::string const &fileName, bool gamma = false);// : gammaCorrection(gamma);
+    Model(std::string const &file_name, bool gamma = false);// : gamma_correction(gamma);
 
     ~Model();
 
-    void Draw(Shader ourShader, int number);
+    void draw(Shader our_shader, int number);
 
     private: 
-        void loadModel(std::string const &fileName);
+        void load_model(std::string const &file_name);
         template <typename N, typename S>
-        void processNode(N *node,    S *scene);
+        void process_node(N *node,    S *scene);
         template <typename M, typename S>
-        Mesh processMesh(M *mesh,    S *scene);
+        Mesh process_mesh(M *mesh,    S *scene);
         template <typename MA, typename TT>
-        std::vector<Texture> loadMaterialTextures(MA *mat, TT type, std::string typeName);
+        std::vector<Texture> load_material_textures(MA *mat, TT type, std::string type_name);
 };
-Model* LoadModel( std::string name, std::string const &fileName, bool gamma = false);
-Model* GetModel(std::string name);   
-void ClearModels();
+Model* load_model( std::string name, std::string const &file_name, bool gamma = false);
+Model* get_model(std::string name);   
+void clear_models();
 /////////////////////////////////////////////MODEL////////////////////////////////////////////////
     
 
@@ -324,31 +326,31 @@ struct Entity {
 
 	Entity(Model* model, vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 rotation = vec3(0.0f, 0.0f, 0.0f), vec3 scale = vec3(1.0f, 1.0f, 1.0f));
 	Entity(Mesh* mesh, vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 rotation = vec3(0.0f, 0.0f, 0.0f), vec3 scale = vec3(1.0f, 1.0f, 1.0f));
-	Entity(std::string const &fileName, vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 rotation = vec3(0.0f, 0.0f, 0.0f), vec3 scale = vec3(1.0f, 1.0f, 1.0f));
+	Entity(std::string const &file_name, vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 rotation = vec3(0.0f, 0.0f, 0.0f), vec3 scale = vec3(1.0f, 1.0f, 1.0f));
 	~Entity();
 	Model* model;
 	Mesh* mesh;
 	vec3 position;
 	vec3 rotation;
 	vec3 scale;
-    struct  BufferData
+    struct  Buffer_Data
       {
-        mat4 modelMatrix;  
-        vec4 modelColor;  
-        vec3 modelPosition;        
+        mat4 model_matrix;  
+        vec4 model_color;  
+        vec3 model_position;        
       };
-    void Draw(Shader ourShader,  int number = 1);
-    void Draw(Shader ourShader, mat4 matrix,  int number = 1);
-    void CreateInstances(BufferData* bufferdatas, int amount);
-    void CreateInstances(BufferData* bufferdatas, int amount, unsigned int buffer);
+    void draw(Shader our_shader,  int number = 1);
+    void draw(Shader our_shader, mat4 matrix,  int number = 1);
+    void create_instances(Buffer_Data* buffer_datas, int amount);
+    void create_instances(Buffer_Data* buffer_datas, int amount, unsigned int buffer);
 };
 /////////////////////////////////////////////ENTITY////////////////////////////////////////////////
 
 
 
 /////////////////////////////////////////////SHAPES////////////////////////////////////////////////
-enum Shape {Cube, Ico, Sphere};
-Entity* shape(Shape type,bool flat=true, int recursionLevel = 1,
+enum Shape {CUBE, ICO, SPHERE, QUAD, TRIANGLE, RIGHT_TRIANGLE, TETRA, PYRAMID};
+Entity* shape(Shape type,bool flat=true, int recursion_level = 1,
 	           vec3 position = vec3(0.0f, 0.0f, 0.0f),
 	           vec3 rotation = vec3(0.0f, 0.0f, 0.0f),
 	           vec3 scale = vec3(1.0f, 1.0f, 1.0f));

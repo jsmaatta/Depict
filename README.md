@@ -9,9 +9,9 @@
 
 
 
-**Depict** is a  C++ OpenGL Graphics Engine (c) Jukka Maatta
+**Depict** is a  C++ OpenGL Graphics Engine
 
-[Latest Version 1.20.6](https://github.com/jsmaatta/Depict)
+[Latest Version 1.20.10](https://github.com/jsmaatta/Depict)
 
 Features
 --------
@@ -25,7 +25,6 @@ Dependencies
 ------------
 - [SDL2](https://www.libsdl.org/) or [GLFW](https://github.com/glfw/glfw) support
 - OpenGL Mathematics ([GLM](https://github.com/g-truc/glm))
-- [STB_image](https://github.com/nothings/stb)
 - Open Asset Import Library ([ASSIMP](https://github.com/assimp/assimp))
 - Dear [ImGui](https://github.com/ocornut/imgui)
 
@@ -46,4 +45,4 @@ int main() {
 }
 ```
 
-Made by  **Jukka Maatta** 2020
+Copyright (c) **Jukka Maatta** 2020
