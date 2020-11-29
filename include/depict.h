@@ -142,6 +142,9 @@ void copyright();
 double get_time(); 
 bool is_key_down(Keys KEY);
 std::tuple<float,float> get_mouse_position(bool lock_mouse=false);
+void wireframe(bool draw_only_wireframes);
+enum Cull_Mode{ENABLED,DISABLED,ALL,FRONT,BACK};
+void culling(Cull_Mode mode);
 /////////////////////////////////////////////FUNCTIONS////////////////////////////////////////////////
 
 
