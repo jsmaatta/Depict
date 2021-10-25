@@ -11,7 +11,7 @@
 
 **Depict** is a  C++ OpenGL Graphics Engine
 
-[Latest Version 1.20.11](https://github.com/jsmaatta/Depict)
+[Latest Version 1.21.11](https://github.com/jsmaatta/Depict)
 
 Features
 --------
@@ -45,4 +45,4 @@ int main() {
 }
 ```
 
-Copyright (c) **Jukka Maatta** 2020
+Copyright (c) **Jukka Maatta** 2020-2021
